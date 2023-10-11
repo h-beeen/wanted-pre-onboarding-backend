@@ -30,7 +30,6 @@ public class Recruitment {
 	private String position;
 
 	@Column(nullable = false)
-	@Enumerated(STRING)
 	private Long reward;
 
 	@Column(nullable = false)
