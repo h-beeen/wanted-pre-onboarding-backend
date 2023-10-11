@@ -10,8 +10,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import kr.co.wanted.onboarding.company.model.constants.CompanyNationality;
 import kr.co.wanted.onboarding.company.model.constants.CompanyRegion;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -33,9 +33,35 @@ public class Recruitment {
 	private Long reward;
 
 	@Column(nullable = false)
-	@Enumerated(STRING)
-	private CompanyRegion region;
+	private String technology;
 
 	@Column(nullable = false)
-	private String technology;
+	private String content;
+
+	@Builder(access = PRIVATE)
+	private Recruitment(
+		final String position,
+		final Long reward,
+		final String technology,
+		final String content
+	) {
+		this.position = position;
+		this.reward = reward;
+		this.technology = technology;
+		this.content = content;
+	}
+
+	public Recruitment create(
+		final String position,
+		final Long reward,
+		final String technology,
+		final String content
+	) {
+		return Recruitment.builder()
+			.position(position)
+			.reward(reward)
+			.technology(technology)
+			.content(content)
+			.build();
+	}
 }
