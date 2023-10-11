@@ -25,20 +25,15 @@ import lombok.NoArgsConstructor;
 public class Company {
 
 	@Id
-	@Column(
-		name = "company_id")
+	@Column(name = "company_id")
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
 
-	@Column(
-		name = "company_name",
-		nullable = false)
+	@Column(nullable = false)
 	private String name;
 
-	@Column(
-		name = "company_nationality",
-		nullable = false)
 	@Enumerated(STRING)
+	@Column(nullable = false)
 	private CompanyNationality nationality;
 
 	@Column(

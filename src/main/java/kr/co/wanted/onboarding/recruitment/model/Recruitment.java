@@ -1,4 +1,4 @@
-package kr.co.wanted.onboarding.user;
+package kr.co.wanted.onboarding.recruitment.model;
 
 import static jakarta.persistence.EnumType.*;
 import static jakarta.persistence.GenerationType.*;
@@ -17,12 +17,26 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@Table(name = "t_user")
+@Table(name = "t_recruitment")
 @NoArgsConstructor(access = PROTECTED)
-public class User {
+public class Recruitment {
 
 	@Id
-	@Column(name = "user_id")
+	@Column(name = "recruitment_id")
 	@GeneratedValue(strategy = IDENTITY)
 	private Long id;
+
+	@Column(nullable = false)
+	private String position;
+
+	@Column(nullable = false)
+	@Enumerated(STRING)
+	private Long reward;
+
+	@Column(nullable = false)
+	@Enumerated(STRING)
+	private CompanyRegion region;
+
+	@Column(nullable = false)
+	private String technology;
 }
